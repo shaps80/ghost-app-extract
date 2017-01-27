@@ -1,0 +1,27 @@
+{
+  "name": "ghost-app-extract",
+  "version": "1.0.0",
+  "description": "Allows you to create better excerpt's in your posts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/shaps80/ghost-app-extract.git"
+  },
+  "keywords": [
+    "ghost",
+    "ghost-app",
+    "excerpt",
+    "blog",
+    "post",
+    "preview"
+  ],
+  "author": "@shaps",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaps80/ghost-app-extract/issues"
+  },
+  "homepage": "https://github.com/shaps80/ghost-app-extract#readme"
+}
