@@ -1,6 +1,6 @@
 {
   "name": "ghost-app-extract",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Allows you to create better excerpt's in your posts.",
   "main": "index.js",
   "scripts": {
