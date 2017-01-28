@@ -46,4 +46,4 @@ This **WILL** be included!
 2. Copy the folder: `ghost-app-extract` to your Ghost apps folder: `content/apps/ghost-app-extract`
 3. Update your Ghost blog's `activeApps` to include the app: `"key":"activeApps","value":"[\"ghost-app-extract\"]"`
 
-For details on how to modify your database, see: [Getting Started: Installing](https://github.com/TryGhost/Ghost/wiki/Apps-Getting-Started-for-Ghost-Devs)
+For details on how to modify your database, see: [Getting Started: Installing](https://github.com/TryGhost/Ghost/wiki/Apps-Getting-Started-for-Ghost-Devs#installing)
