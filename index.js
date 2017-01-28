@@ -4,34 +4,38 @@ var App = require('ghost-app'),
     converter = new Showdown.converter({extensions: ['ghostgfm', 'footnotes', 'highlight']}),
     downsize = require('downsize');
 
-const truncateBy = "words";
-const truncateLength = "26";
 const openCloseTagsRegex = /<extract>((.|\n)*?)<\/extract>/i;
 const singleTagRegex = /^((.|\n)*?)<(extract) *\/>/i;
+const truncateOptions = {
+    "words": 50
+};
 
 function stripHTML(html) {
-    var excerpt = html.replace(/<a href="#fn.*?rel="footnote">.*?<\/a>/gi, '');
+    var excerpt = html.replace(/<(\/?extract) *(\/?)>/ig, '').replace(/<a href="#fn.*?rel="footnote">.*?<\/a>/gi, '');
     excerpt = excerpt.replace(/<div class="footnotes"><ol>.*?<\/ol><\/div>/, '');
     excerpt = excerpt.replace(/<\/?[^>]+>/gi, '');
     excerpt = excerpt.replace(/(\r\n|\n|\r)+/gm, ' ');
-    return downsize(excerpt, { truncateBy: truncateLength })
+    return excerpt;
 }
 
 var postExtract = function(post) {
     var openCloseTagsMatches = openCloseTagsRegex.exec(post.html);
 
     if (openCloseTagsMatches !== null) {
-        var html = new hbs.handlebars.SafeString(openCloseTagsMatches[1]);
-        post.extract = stripHTML(String(html));
+        var html = stripHTML(openCloseTagsMatches[1]);
+        html = downsize(html, truncateOptions);
+        post.extract = new hbs.handlebars.SafeString(String(html));
     } else {
         var singleTagMatches = singleTagRegex.exec(post.html);
 
         if (singleTagMatches !== null) {
-            var html = new hbs.handlebars.SafeString(singleTagMatches[1]);
-            post.extract = stripHTML(String(html));
+            var html = stripHTML(singleTagMatches[1]);
+            html = downsize(html, truncateOptions);
+            post.extract = new hbs.handlebars.SafeString(String(html));
         } else {
-            var html = post.html.replace(/<(\/?extract) *(\/?)>/ig, '');
-            post.extract = stripHTML(String(post.html));
+            var html = stripHTML(post.html);
+            html = downsize(html, truncateOptions);
+            post.extract = new hbs.handlebars.SafeString(String(html));
         }
     }
 };

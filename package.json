@@ -1,6 +1,6 @@
 {
   "name": "ghost-app-extract",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Allows you to create better excerpt's in your posts.",
   "repository": {
     "type": "git",
