@@ -23,14 +23,14 @@ var postExtract = function(post) {
 
     if (openCloseTagsMatches !== null) {
         var html = stripHTML(openCloseTagsMatches[1]);
-        html = downsize(html, truncateOptions);
+        html = downsize(html, {});
         post.extract = new hbs.handlebars.SafeString(String(html));
     } else {
         var singleTagMatches = singleTagRegex.exec(post.html);
 
         if (singleTagMatches !== null) {
             var html = stripHTML(singleTagMatches[1]);
-            html = downsize(html, truncateOptions);
+            html = downsize(html, {});
             post.extract = new hbs.handlebars.SafeString(String(html));
         } else {
             var html = stripHTML(post.html);
