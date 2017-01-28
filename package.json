@@ -4,16 +4,15 @@
   "description": "Allows you to create better excerpt's in your posts.",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/shaps80/ghost-app-extract.git"
+    "url": "git+ssh://https://github.com/shaps80/ghost-app-extract.git"
   },
   "dependencies": {
-    "ghost-app"     : "git+https://github.com/shaps80/ghost-app-extract.git"
+    "ghost-app": "^0.0.3"
   },
   "ghost": {
     "permissions": {
       "filters": [
-        "prePostsExtract",
-        "rss.feed"
+        "prePostsRender"
       ]
     }
   },
